@@ -81,6 +81,13 @@ exports.updateOne = (Model) =>
         //Get id from request
         const { id } = req.params;
 
+        //Check if there is a password in req.body
+        if (req.body.password) {
+            return next(
+                new AppError('Do NOT use this route for updating passwords', 400)
+            );
+        }
+
         //Find document and update
         const document = await Model.findByIdAndUpdate(id, req.body, {
             new: true,

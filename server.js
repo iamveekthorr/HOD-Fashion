@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const http = require('http');
 
 process.on('uncaughtException', (err) => {
     console.log(`Uncaught Exception: ${err.message}`);
@@ -27,11 +26,7 @@ mongoose
 
 const port = process.env.PORT || 5000;
 
-const server = http.createServer(app);
-
-socketIo(server);
-
-server.listen(port, () => {
+const server = app.listen(port, () => {
     console.log(`App running on port ${port}...`);
 });
 

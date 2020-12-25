@@ -13,6 +13,8 @@ const cors = require('cors');
 const AppError = require('./Utils/appError');
 const globalErrorHandler = require('./Controllers/errorController');
 
+const userRouter = require('./Routes/userRoutes');
+
 //initialize express
 const app = express();
 
@@ -81,6 +83,7 @@ app.use((req, res, next) => {
 // app.use('/', viewRouter);
 
 //API Routes
+app.use('/api/v1/users', userRouter);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'Client/build')));

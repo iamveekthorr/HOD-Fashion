@@ -38,6 +38,20 @@ const createAndSendToken = (user, statusCode, req, res) => {
     });
 };
 
+exports.signup = catchAsync(async(req, res, next) => {
+    const { firstName, lastName, email, password, passwordConfirm } = req.body;
+
+    if (!firstName || !lastName || !email || !password || !passwordConfirm)
+        return next(new AppError('All fields are required', 400));
+
+    if (password !== passwordConfirm)
+        return next(new AppError('Passwords do not match', 400));
+
+    const user = await User.create({ firstName, lastName, email, password });
+
+    createAndSendToken(user, 201, req, res);
+});
+
 exports.login = catchAsync(async(req, res, next) => {
     const { email, password } = req.body;
 
@@ -141,6 +155,7 @@ exports.updatePassword = catchAsync(async(req, res, next) => {
 
     //Check if posted password is correct
     const { currentPassword, newPassword, newPasswordConfirm } = req.body;
+
     if (!(await user.correctPassword(currentPassword, user.password))) {
         return next(
             new AppError('Your current password is incorrect. Please try again.', 401)
