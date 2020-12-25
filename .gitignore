@@ -1,0 +1,5 @@
+icons-dev/
+.vscode/
+node_modules/
+config.env
+build/
