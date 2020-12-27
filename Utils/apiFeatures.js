@@ -7,11 +7,12 @@ class APIFeatures {
     filter() {
         const queryObj = {...this.queryString };
 
-        const excludedFields = ["page", "sort", "limit", "fields"];
+        const excludedFields = ['page', 'sort', 'limit', 'fields'];
 
         excludedFields.forEach((el) => delete queryObj[el]);
 
         //Implementing advanced filtering features
+        //JSON.stringify converts the object to a string so that string methods can be used on it
         let queryStr = JSON.stringify(queryObj);
         queryStr = queryStr.replace(
             /\b(gte|gt|lte|lt|regex|options)\b/g,
@@ -19,22 +20,42 @@ class APIFeatures {
         );
 
         //To enable nested searching
-        queryStr = queryStr.replace(/__/g, ".");
+        queryStr = queryStr.replace(/__/g, '.');
 
-        //Add the queryString to the class to use to count the documents in the collection
-        this.q = JSON.parse(queryStr);
+        const newQueryObj = JSON.parse(queryStr);
 
-        this.query = this.query.find(JSON.parse(queryStr));
+        //For searching for elements in arrays
+        if (newQueryObj.in) {
+            //Get all the keys in newQueryObj.in
+            const keys = Object.keys(newQueryObj.in);
+
+            //Loop through keys and add each key to newQueryObj with its value as an array of RegEx elements
+            keys.forEach((key) => {
+                newQueryObj[key] = {
+                    $all: newQueryObj.in[key]
+                        .split(',')
+                        .map((el) => new RegExp(el.trim(), 'gi')),
+                };
+            });
+
+            //Delete 'in' from newQueryObj
+            delete newQueryObj.in;
+        }
+
+        //Add the queryObj to the class to use it to count the documents in the collection
+        this.q = newQueryObj;
+
+        this.query = this.query.find(newQueryObj);
 
         return this;
     }
 
     sort() {
         if (this.queryString.sort) {
-            const sortBy = this.queryString.sort.split(",").join(" ");
+            const sortBy = this.queryString.sort.split(',').join(' ');
             this.query = this.query.sort(sortBy);
         } else {
-            this.query = this.query.sort("-dateCreated");
+            this.query = this.query.sort('-dateCreated');
         }
 
         return this;
@@ -42,10 +63,10 @@ class APIFeatures {
 
     limitFields() {
         if (this.queryString.fields) {
-            const fields = this.queryString.fields.split(",").join(" ");
+            const fields = this.queryString.fields.split(',').join(' ');
             this.query = this.query.select(fields);
         } else {
-            this.query = this.query.select("-__v");
+            this.query = this.query.select('-__v');
         }
 
         return this;
