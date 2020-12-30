@@ -3,4 +3,4 @@ icons-dev/
 node_modules/
 config.env
 build/
-.xd
+*.xd
