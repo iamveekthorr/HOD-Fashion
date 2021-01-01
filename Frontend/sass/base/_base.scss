@@ -1,0 +1,28 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; //1rem = 10px
+}
+
+body {
+    font-family: $display-font;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    max-width: 140rem;
+    margin: 0 auto;
+    color: $color-text;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}

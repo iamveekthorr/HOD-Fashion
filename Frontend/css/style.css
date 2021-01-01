@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;500;600;700&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; }
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  max-width: 140rem;
+  margin: 0 auto;
+  color: #363333; }
+
+a {
+  text-decoration: none;
+  color: currentColor; }
+
+.u-flex-x-y-center {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.u-flex-x-center {
+  display: flex;
+  justify-content: center; }
+
+.u-flex-y-center {
+  display: flex;
+  align-items: center; }
+
+.mb2-2 {
+  margin-bottom: 2.2rem !important; }
+
+.mb1 {
+  margin-bottom: 1rem !important; }
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  color: #fff;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  padding: 7.5px;
+  background-color: #9fd4b3;
+  cursor: pointer; }
+  .btn--google {
+    background-color: #4285f4; }
+  .btn--facebook {
+    background-color: #f0f0f0;
+    color: #363333; }
+  .btn--block {
+    width: 100%; }
+
+.form {
+  width: 100%; }
+  .form__group {
+    display: flex;
+    align-items: center;
+    width: 95%;
+    margin: 0 auto 3.5rem; }
+    .form__group--half-width > div {
+      width: 50%; }
+    .form__group--centered {
+      justify-content: center; }
+    .form__group--block {
+      width: 100%; }
+  .form__input-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    position: relative; }
+    .form__input-container:not(:last-child) {
+      margin-right: 2.6rem; }
+    .form__input-container > input {
+      font-family: inherit;
+      font-size: 8px;
+      font-weight: inherit;
+      padding-left: 2rem;
+      padding-bottom: 3.25px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid red; }
+    .form__input-container > label {
+      position: absolute;
+      bottom: 3.25px;
+      left: 0;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      font-size: 8px;
+      font-weight: 300;
+      pointer-events: none; }
+      .form__input-container > label > svg {
+        margin-right: 5px; }
+      .form__input-container > label > span {
+        transition-property: font-size, transform;
+        transition-duration: 0.2s; }
+    .form__input-container > input:focus + label > span,
+    .form__input-container > input:not(:placeholder-shown) + label > span {
+      font-size: 6px;
+      transform: translate(-2rem, -1.5rem); }
+    .form__input-container--checkbox {
+      flex-direction: row; }
+      .form__input-container--checkbox > label {
+        width: max-content;
+        position: relative;
+        text-transform: capitalize;
+        font-size: 8px;
+        font-weight: 400;
+        pointer-events: all;
+        cursor: pointer; }
+        .form__input-container--checkbox > label > input {
+          margin-right: 1rem; }
+        .form__input-container--checkbox > label > span {
+          transition: none; }
+
+.icon {
+  height: 2rem;
+  width: 2rem;
+  fill: #fff; }
+  .icon--facebook {
+    fill: #757575; }
+  .icon--placeholder {
+    fill: #5d5858;
+    height: 1.5rem;
+    width: 1.5rem; }
+
+.or-demarcator {
+  font-size: 8px;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  overflow: hidden; }
+  .or-demarcator::before, .or-demarcator::after {
+    content: "";
+    background-color: #707070;
+    width: 50%;
+    height: 1px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); }
+  .or-demarcator::before {
+    left: -2.2rem; }
+  .or-demarcator::after {
+    right: -2.2rem; }
+
+.signup__body {
+  height: 100vh;
+  width: 100vw; }
+
+.signup__main {
+  flex-direction: column;
+  margin: 0 auto; }
+
+.signup__actions {
+  font-size: 1.5rem;
+  margin-bottom: 1.7rem; }
+  .signup__actions__demarcator {
+    height: 2.15rem;
+    width: 1px;
+    background-color: #707070;
+    margin: 0 6.75px; }
+
+.signup__action {
+  position: relative;
+  opacity: 20%;
+  transition: opacity 0.2s; }
+  .signup__action::before, .signup__action::after {
+    content: "";
+    position: absolute;
+    bottom: -5.25px;
+    background-color: #7b4c9d;
+    height: 3px;
+    border-radius: 9rem;
+    visibility: hidden;
+    opacity: 0;
+    transition-property: opacity, visibility;
+    transition-duration: 0.2s; }
+  .signup__action::before {
+    width: 3px;
+    right: 1.3rem; }
+  .signup__action::after {
+    width: 1.25rem;
+    right: -2px; }
+  .signup__action--active {
+    opacity: 100%; }
+    .signup__action--active::before, .signup__action--active::after {
+      visibility: visible;
+      opacity: 1; }
+
+.signup__page-text {
+  text-align: center;
+  width: 18.4rem;
+  font-size: 8px;
+  text-transform: capitalize;
+  margin-bottom: 1.5rem;
+  font-weight: 300; }
+
+.signup__socials {
+  margin-bottom: 1.6rem; }
+  .signup__socials > button:first-of-type {
+    margin-right: 1rem; }
+  .signup__socials > button > svg {
+    margin-right: 1.1rem; }
+
+.intro {
+  width: 35vw;
+  height: 100vh;
+  position: relative;
+  background-image: url("../img/signup-img-1x.png");
+  background-size: cover; }
+  .intro__text {
+    position: absolute;
+    bottom: 2.1rem;
+    left: 1.5rem;
+    color: #fff; }
+  .intro__heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 5px; }
+  .intro__text-content {
+    font-size: 1rem;
+    width: 70%;
+    margin-bottom: 1.5rem; }
+  .intro__author {
+    font-size: 1rem;
+    font-weight: 400;
+    position: relative; }
+    .intro__author::before {
+      content: "";
+      position: absolute;
+      top: -6.75px;
+      left: 0;
+      width: 45%;
+      height: 0.1px;
+      background-color: #fff; }

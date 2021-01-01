@@ -1,0 +1,13 @@
+.icon {
+    height: 2rem;
+    width: 2rem;
+    fill: $color-white;
+    &--facebook {
+        fill: $color-gray-1;
+    }
+    &--placeholder {
+        fill: $color-icon-placeholder;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}
