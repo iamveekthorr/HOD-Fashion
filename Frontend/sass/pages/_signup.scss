@@ -1,0 +1,109 @@
+.signup {
+    &__body {
+        height: 100vh;
+        width: 100vw;
+    }
+    &__main {
+        flex-direction: column;
+        margin: 0 auto;
+    }
+    &__actions {
+        font-size: 1.5rem;
+        margin-bottom: 1.7rem;
+        &__demarcator {
+            height: 2.15rem;
+            width: 1px;
+            background-color: $color-gray-2;
+            margin: 0 6.75px;
+        }
+    }
+    &__action {
+        position: relative;
+        opacity: 20%;
+        transition: opacity 0.2s;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: -5.25px;
+            background-color: $color-pellets;
+            height: 3px;
+            border-radius: 9rem;
+            visibility: hidden;
+            opacity: 0;
+            transition-property: opacity, visibility;
+            transition-duration: 0.2s;
+        }
+        &::before {
+            width: 3px;
+            right: 1.3rem;
+        }
+        &::after {
+            width: 1.25rem;
+            right: -2px;
+        }
+        &--active {
+            opacity: 100%;
+            &::before,
+            &::after {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+    &__page-text {
+        text-align: center;
+        width: 18.4rem;
+        font-size: 8px;
+        text-transform: capitalize;
+        margin-bottom: 1.5rem;
+        font-weight: 300;
+    }
+    &__socials {
+        margin-bottom: 1.6rem;
+        &>button:first-of-type {
+            margin-right: 1rem;
+        }
+        &>button>svg {
+            margin-right: 1.1rem;
+        }
+    }
+}
+
+.intro {
+    width: 35vw;
+    height: 100vh;
+    position: relative;
+    background-image: url("../img/signup-img-1x.png");
+    background-size: cover;
+    &__text {
+        position: absolute;
+        bottom: 2.1rem;
+        left: 1.5rem;
+        color: $color-white;
+    }
+    &__heading {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    &__text-content {
+        font-size: 1rem;
+        width: 70%;
+        margin-bottom: 1.5rem;
+    }
+    &__author {
+        font-size: 1rem;
+        font-weight: 400;
+        position: relative;
+        &::before {
+            content: "";
+            position: absolute;
+            top: -6.75px;
+            left: 0;
+            width: 45%;
+            height: 0.1px;
+            background-color: $color-white;
+        }
+    }
+}

@@ -1,0 +1,79 @@
+.form {
+    width: 100%;
+    &__group {
+        display: flex;
+        align-items: center;
+        width: 95%;
+        margin: 0 auto 3.5rem;
+        &--half-width>div {
+            width: 50%;
+        }
+        &--centered {
+            justify-content: center;
+        }
+        &--block {
+            width: 100%;
+        }
+    }
+    &__input-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        &:not(:last-child) {
+            margin-right: 2.6rem;
+        }
+        &>input {
+            font-family: inherit;
+            font-size: 8px;
+            font-weight: inherit;
+            padding-left: 2rem;
+            padding-bottom: 3.25px;
+            outline: none;
+            border: none;
+            border-bottom: 1px solid red;
+        }
+        &>label {
+            position: absolute;
+            bottom: 3.25px;
+            left: 0;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            font-size: 8px;
+            font-weight: 300;
+            pointer-events: none;
+            &>svg {
+                margin-right: 5px;
+            }
+            &>span {
+                transition-property: font-size, transform;
+                transition-duration: 0.2s;
+            }
+        }
+        &>input:focus+label>span,
+        &>input:not(:placeholder-shown)+label>span {
+            font-size: 6px;
+            transform: translate(-2rem, -1.5rem);
+        }
+        &--checkbox {
+            flex-direction: row;
+            &>label {
+                width: max-content;
+                position: relative;
+                text-transform: capitalize;
+                font-size: 8px;
+                font-weight: 400;
+                pointer-events: all;
+                cursor: pointer;
+                &>input {
+                    margin-right: 1rem;
+                }
+                &>span {
+                    transition: none;
+                }
+            }
+        }
+    }
+}

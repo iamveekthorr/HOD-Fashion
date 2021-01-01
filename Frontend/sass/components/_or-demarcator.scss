@@ -1,0 +1,23 @@
+.or-demarcator {
+    font-size: 8px;
+    position: relative;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    &::before,
+    &::after {
+        content: "";
+        background-color: $color-gray-2;
+        width: 50%;
+        height: 1px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &::before {
+        left: -2.2rem;
+    }
+    &::after {
+        right: -2.2rem;
+    }
+}

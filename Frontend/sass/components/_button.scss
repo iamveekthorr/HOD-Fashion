@@ -1,0 +1,23 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: capitalize;
+    color: $color-white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    padding: 7.5px;
+    background-color: $color-disabled;
+    cursor: pointer;
+    &--google {
+        background-color: $color-google;
+    }
+    &--facebook {
+        background-color: $color-facebook;
+        color: $color-text;
+    }
+    &--block {
+        width: 100%;
+    }
+}
